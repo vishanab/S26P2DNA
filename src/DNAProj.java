@@ -1,5 +1,5 @@
 /**
- * {Project Description Here}
+ * The project relates to building a specialized tree database for DNA sequencing
  */
 
 import java.io.IOException;
@@ -7,8 +7,8 @@ import java.io.IOException;
 /**
  * The class containing the main method.
  *
- * @author {Your Name Here}
- * @version {Put Something Here}
+ * @author Vishana Baskaran and Sital Paudel
+ * @version 2/15/26
  */
 
 //On my honor:
