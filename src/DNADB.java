@@ -9,6 +9,7 @@
  *
  */
 public class DNADB implements DNA {
+    private DNATree tree;
 
     // ----------------------------------------------------------
     /**
@@ -16,6 +17,7 @@ public class DNADB implements DNA {
      */
     public DNADB()
     {
+        tree = new DNATree();
     }
 
 
@@ -26,6 +28,21 @@ public class DNADB implements DNA {
      * @return The outcomes message string
      */
     public String insert(String sequence) {
+        if (sequence == null) {
+            return "Bad input: Sequence may not be null\n";
+        }
+        else if (sequence.equals("")) {
+            return "Bad input: Sequence may not be empty\n";
+        }
+        boolean alph = true;
+        for (int i = 0; i < sequence.length()-1; i++) {
+            if (sequence.charAt(i) > sequence.charAt(i+1)) {
+                alph = false;
+            }
+        }
+        if (!alph) {
+            return "Bad Input Sequence |" + sequence + "|\n";
+        }
         return null;
     }
 
