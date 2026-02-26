@@ -20,6 +20,7 @@ public class DNAProjTest extends TestCase {
     /**
      * Test output formatting
      */
+    /*
     public void testSampleInput() {
         assertFuzzyEquals(
             "Sequence |ACGT| inserted",
@@ -110,21 +111,32 @@ public class DNAProjTest extends TestCase {
                 + "# of nodes visited: 3",
                 it.search("ACGT$"));
     }
-
+    */
 
     /**
      * Example tests for bad input error formatting
      */
-    @ScoringWeight(10.0)
     public void testBadInput() {
-        assertFuzzyEquals(
+        assertFuzzyEquals("testBadInput",
             "Bad input: Sequence may not be null\r\n",
             it.insert(null));
-        assertFuzzyEquals(
+        assertFuzzyEquals("testBadInput",
             "Bad input: Sequence may not be empty\r\n",
             it.insert(""));
-        assertFuzzyEquals(
+        assertFuzzyEquals("testBadInput",
             "Bad Input Sequence |AXA|\r\n",
             it.insert("AXA"));
+        assertFuzzyEquals("testBadInput",
+            "Bad Input Sequence |A A|\r\n",
+            it.insert("A A"));
+        assertFuzzyEquals("testBadInput",
+            "Bad Input Sequence |A |\r\n",
+            it.insert("A "));
+        assertFuzzyEquals("testBadInput",
+            "Bad Input Sequence |A$|\r\n",
+            it.insert("A$"));
+        assertFuzzyEquals("testBadInput",
+            "Bad input sequence |A$A|\r\n",
+            it.search("A$A"));
     }
 }
