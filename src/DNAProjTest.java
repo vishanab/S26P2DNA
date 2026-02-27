@@ -139,4 +139,39 @@ public class DNAProjTest extends TestCase {
             "Bad input sequence |A$A|\r\n",
             it.search("A$A"));
     }
+    
+    /**
+     * Example tests for bad input error formatting
+     */
+    public void testBadExtra() {
+        assertFuzzyEquals("testBadInput",
+            "Bad input: Sequence may not be null\r\n",
+            it.remove(null));
+        assertFuzzyEquals("testBadInput",
+            "Bad input: Sequence may not be empty\r\n",
+            it.remove(""));
+        assertFuzzyEquals("Bad input: Sequence may not be null\r\n",
+            it.search(null));
+        /*
+        assertFuzzyEquals("no sequence found\n"
+            + "    of nodes visited 1",
+            it.insert(""));*/
+        assertFuzzyEquals("testBadInput",
+            "Bad input sequence |CNA|\r\n",
+            it.search("CNA"));
+        assertFuzzyEquals("testBadInput",
+            "Bad input sequence |ABCD|\r\n",
+            it.search("ABCD"));    
+        assertFuzzyEquals("testBadInput",
+            "Bad input sequence |123|\r\n",
+            it.search("123"));
+        assertFuzzyEquals("testBadInput",
+            "Bad input sequence |B|\r\n",
+            it.search("B")); 
+        assertFuzzyEquals("Bad Input Sequence |CBA|\r\n",
+            it.insert("CBA"));    
+        assertFuzzyEquals(
+            "Sequence |ACGT| inserted",
+            it.insert("ACGT"));
+        }
 }
