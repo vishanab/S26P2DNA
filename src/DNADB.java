@@ -34,14 +34,11 @@ public class DNADB implements DNA {
         else if (sequence.equals("")) {
             return "Bad input: Sequence may not be empty\n";
         }
-        boolean alph = true;
-        for (int i = 0; i < sequence.length()-1; i++) {
-            if (sequence.charAt(i) > sequence.charAt(i+1)) {
-                alph = false;
+        for (int i = 0; i < sequence.length(); i++) {
+            char letter = sequence.charAt(i);
+            if (letter != 'A' && letter != 'C' && letter != 'G' && letter != 'T') {
+                return "Bad Input Sequence |" + sequence + "|\n";
             }
-        }
-        if (!alph) {
-            return "Bad Input Sequence |" + sequence + "|\n";
         }
         return "Sequence |" + sequence +"| inserted";
     }
