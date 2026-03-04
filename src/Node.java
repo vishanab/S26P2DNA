@@ -9,5 +9,5 @@ public interface Node {
     String print();
 
 
-    boolean search();
+    boolean search(String s);
 }

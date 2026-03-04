@@ -22,7 +22,7 @@ public class LeafNode implements Node {
     }
 
 
-    public boolean search() {
+    public boolean search(String s) {
         return false;
     }
 }
