@@ -34,17 +34,14 @@ public class DNADB implements DNA {
         else if (sequence.equals("")) {
             return "Bad input: Sequence may not be empty\n";
         }
-        boolean alph = true;
-        for (int i = 0; i < sequence.length()-1; i++) {
-            if (sequence.charAt(i) > sequence.charAt(i+1)) {
-                alph = false;
+        for (int i = 0; i < sequence.length(); i++) {
+            char letter = sequence.charAt(i);
+            if (letter != 'A' && letter != 'C' && letter != 'G' && letter != 'T') {
+                return "Bad Input Sequence |" + sequence + "|\n";
             }
         }
-        if (!alph) {
-            return "Bad Input Sequence |" + sequence + "|\n";
-        }
         return "Sequence |" + sequence +"| inserted";
-    }
+     }
 
 
     // ----------------------------------------------------------
@@ -60,7 +57,13 @@ public class DNADB implements DNA {
         else if (sequence.equals("")) {
             return "Bad input: Sequence may not be empty\n";
         }
-        return null;
+        for (int i = 0; i < sequence.length(); i++) {
+            char letter = sequence.charAt(i);
+            if (letter != 'A' && letter != 'C' && letter != 'G' && letter != 'T') {
+                return "Bad Input Sequence |" + sequence + "|\n";
+            }
+        }
+        return "Sequence |" + sequence +"| removed";
     }
 
 
@@ -103,10 +106,10 @@ public class DNADB implements DNA {
     public String search(String sequence) {
         if (sequence == null) {
             return "Bad input: Sequence may not be null\r\n";
-        }/*
-        if (sequence.length() == 0) {
+        }
+        if (sequence.equals("")) {
             return "no sequence found\n" + "    of nodes visited 1";
-        }*/
+        }
         for (int i = 0; i < sequence.length(); i++) {
             char letter = sequence.charAt(i);
             if (letter != 'A' && letter != 'C' && letter != 'G' && letter != 'T') {
