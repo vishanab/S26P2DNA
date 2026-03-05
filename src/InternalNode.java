@@ -24,14 +24,6 @@ public class InternalNode implements Node{
     }
 
 
-    public String print() {
-        String res = "";
-        for (int i = 0; i < 5; i++) {
-            res += kids[i].print();
-        }
-        return res;
-    }
-
 
     public boolean search(String s) {
         int ind = indexOfChar(s.charAt(0));
@@ -50,5 +42,27 @@ public class InternalNode implements Node{
         } else {
             return 4;
         }
+    }
+    
+    public String print(int d) {
+        String res = " ".repeat(d)+"I\n";
+        for (Node n : kids) {
+            res += n.print(d+1);
+        }
+        return res;
+    }
+    public String printLengths(int d) {
+        String res = " ".repeat(d)+"I\n";
+        for (Node n : kids) {
+            res += n.printLengths(d+1);
+        }
+        return res;
+    }
+    public String printStats(int d) {
+        String res = " ".repeat(d)+"I\n";
+        for (Node n : kids) {
+            res += n.printStats(d+1);
+        }
+        return res;
     }
 }
