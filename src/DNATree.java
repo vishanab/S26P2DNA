@@ -18,16 +18,16 @@ public class DNATree {
         root = root.remove(s + "$");
     }
     public String print() {
-        return root.print(0);
+        return "tree dump:\n"+root.print(0);
     }
 
 
     public String printLengths() {
-        return root.printLengths(0);
+        return "tree dump with lengths:\n" + root.printLengths(0);
     }
 
 
     public String printStats() {
-        return root.printStats(0);
+        return "tree dump with stats:\n"+ root.printStats(0);
     }
 }

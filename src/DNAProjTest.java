@@ -36,7 +36,6 @@ public class DNAProjTest extends TestCase {
         assertFuzzyEquals(
             "Sequence |ACG| does not exist",
             it.remove("ACG"));
-        /*
         assertFuzzyEquals(
             "tree dump:\r\n"
             + "I\r\n"
@@ -56,6 +55,7 @@ public class DNAProjTest extends TestCase {
             + "  E\r\n"
             + "  E",
             it.print());
+
         assertFuzzyEquals(
             "tree dump with lengths:\r\n"
             + "I\r\n"
@@ -94,7 +94,6 @@ public class DNAProjTest extends TestCase {
             + "  E\r\n"
             + "  E",
             it.printStats());
-            */
 //        assertFuzzyEquals(
 //            "AAAA\r\n"
 //            + "# of nodes visited: 4",
