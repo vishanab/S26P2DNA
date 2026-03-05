@@ -11,16 +11,14 @@ public class InternalNode implements Node{
     
     
     public Node insert(String s) {
-        if (s.length() == 0) {
-            return this;
-        }
         int ind = indexOfChar(s.charAt(0));
-        if (s.length() == 1) {
-            kids[ind] = kids[ind].insert("");
-        } else {
-            kids[ind] = kids[ind].insert(s.substring(1));  
-        }
 
+        if (s.length() == 1) {
+            kids[ind] = kids[ind].insert(s);
+        }
+        else {
+            kids[ind] = kids[ind].insert(s.substring(1));
+        }
         return this;
     }
 
@@ -34,10 +32,11 @@ public class InternalNode implements Node{
 
 
     public boolean search(String s) {
-        if (s.length() == 0) {
-            return false;
-        }
         int ind = indexOfChar(s.charAt(0));
+
+        if (s.length() == 1) {
+            return kids[ind].search("");
+        }
 
         return kids[ind].search(s.substring(1));
     }
