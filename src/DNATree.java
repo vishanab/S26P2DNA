@@ -5,9 +5,11 @@ public class DNATree {
     public DNATree() {
         root = LeafNode.EMPTY_LEAF;
     }
-    
-    public String search(String s) {
-        return "";
+    public void insert(String s) {
+        root = root.insert(s + "$");
+    }
+    public boolean search(String s) {
+        return root.search(s + "$");
     }
 
     public String print() {

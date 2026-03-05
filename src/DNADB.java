@@ -40,7 +40,10 @@ public class DNADB implements DNA {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
         }
-        //tree.insert(sequence);
+        if (tree.search(sequence)) {
+            return "Sequence |" + sequence +"| already exists";
+        }
+        tree.insert(sequence);
         return "Sequence |" + sequence +"| inserted";
      }
 

@@ -9,16 +9,23 @@ public class LeafNode implements Node {
 
 
     public Node insert(String s) {
-        if (info == null) {
-            info = s;
-            return this;
+        if (this == EMPTY_LEAF) {
+            return new LeafNode(s);
         }
-        else if (info.equals(s)) {
+        if (info.equals(s)) {
             return this;
         }
         InternalNode newNode = new InternalNode(EMPTY_LEAF);
-        newNode.insert(info);
-        newNode.insert(s);
+        int i1 = newNode.indexOfChar(info.charAt(0));
+        int i2 = newNode.indexOfChar(s.charAt(0));
+        if (i1 != i2) {
+            newNode.kids[i1] = new LeafNode(info.substring(1));
+            newNode.kids[i2] = new LeafNode(s.substring(1));      
+        } else {
+            newNode.kids[i1] = new LeafNode(info.substring(1)).insert(s.substring(1));
+        }
+
+
         return newNode;
     }
 

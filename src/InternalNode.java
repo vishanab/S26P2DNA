@@ -1,6 +1,6 @@
 
 public class InternalNode implements Node{
-    private Node[] kids;
+    public Node[] kids;
     public InternalNode(Node flyweight) {
         kids = new Node[5];
         for (int i = 0; i < 5; i++) {
@@ -11,8 +11,16 @@ public class InternalNode implements Node{
     
     
     public Node insert(String s) {
+        if (s.length() == 0) {
+            return this;
+        }
         int ind = indexOfChar(s.charAt(0));
-        kids[ind] = kids[ind].insert(s.substring(1));
+        if (s.length() == 1) {
+            kids[ind] = kids[ind].insert("");
+        } else {
+            kids[ind] = kids[ind].insert(s.substring(1));  
+        }
+
         return this;
     }
 
