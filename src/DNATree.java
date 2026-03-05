@@ -11,7 +11,9 @@ public class DNATree {
     public boolean search(String s) {
         return root.search(s + "$");
     }
-
+    public void remove(String s) {
+        root = root.remove(s + "$");
+    }
     public String print() {
         return root.print(0);
     }
