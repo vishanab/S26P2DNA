@@ -34,11 +34,10 @@ public class InternalNode implements Node{
 
 
     public boolean search(String s) {
-        int ind = indexOfChar(s.charAt(0));
-
-        if (kids[ind] instanceof LeafNode) {
-            return kids[ind].search(s);
+        if (s.length() == 0) {
+            return false;
         }
+        int ind = indexOfChar(s.charAt(0));
 
         return kids[ind].search(s.substring(1));
     }

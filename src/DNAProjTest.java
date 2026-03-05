@@ -313,18 +313,18 @@ public class DNAProjTest extends TestCase {
         assertTrue(tree.contains("A"));
         assertTrue(tree.contains("AA"));
     }
-//    public void testInsertDeepPrefixStress() {
-//
-//        it.insert("A");
-//        it.insert("AA");
-//        it.insert("AAA");
-//        it.insert("AAAA");
-//        it.insert("AAAAA");
-//
-//        assertFuzzyEquals(
-//            "Sequence |AAAAA| already exists",
-//            it.insert("AAAAA"));
-//    }
+    public void testInsertDeepPrefixStress() {
+
+        it.insert("A");
+        it.insert("AA");
+        it.insert("AAA");
+        it.insert("AAAA");
+        it.insert("AAAAA");
+
+        assertFuzzyEquals(
+            "Sequence |AAAAA| already exists",
+            it.insert("AAAAA"));
+    }
     public void testSearchBasic() {
 
         it.insert("ACGT");
