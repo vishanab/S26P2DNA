@@ -9,7 +9,10 @@ public class DNATree {
         root = root.insert(s + "$");
     }
     public boolean search(String s) {
-        return root.search(s + "$");
+        if (!s.endsWith("$")) {
+            s = s + "$";
+        }
+        return root.search(s);
     }
     public void remove(String s) {
         root = root.remove(s + "$");

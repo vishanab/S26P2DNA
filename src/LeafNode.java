@@ -15,18 +15,31 @@ public class LeafNode implements Node {
         if (info.equals(s)) {
             return this;
         }
-        InternalNode newNode = new InternalNode(EMPTY_LEAF);
-        int i1 = newNode.indexOfChar(info.charAt(0));
-        int i2 = newNode.indexOfChar(s.charAt(0));
-        if (i1 != i2) {
-            newNode.kids[i1] = new LeafNode(info.substring(1));
-            newNode.kids[i2] = new LeafNode(s.substring(1));      
-        } else {
-            newNode.kids[i1] = new LeafNode(info.substring(1)).insert(s.substring(1));
+        String a = info;
+        String b = s;
+
+        InternalNode root = new InternalNode(EMPTY_LEAF);
+        InternalNode current = root;
+
+        int depth = 0;
+
+        while (depth < a.length() && depth < b.length()
+            && a.charAt(depth) == b.charAt(depth)) {
+
+            int idx = current.indexOfChar(a.charAt(depth));
+            InternalNode next = new InternalNode(EMPTY_LEAF);
+            current.kids[idx] = next;
+            current = next;
+            depth++;
         }
 
+        int i1 = current.indexOfChar(a.charAt(depth));
+        int i2 = current.indexOfChar(b.charAt(depth));
 
-        return newNode;
+        current.kids[i1] = new LeafNode(a);
+        current.kids[i2] = new LeafNode(b);
+
+        return root;
     }
 
 
