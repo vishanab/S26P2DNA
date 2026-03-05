@@ -4,4 +4,5 @@ public class DNATree {
     public DNATree() {
         root = LeafNode.EMPTY_LEAF;
     }
+    
 }
