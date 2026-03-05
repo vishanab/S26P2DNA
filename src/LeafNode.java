@@ -37,9 +37,14 @@ public class LeafNode implements Node {
     }
 
 
+
     public int search(String s, int depth, String res) {
         if (this == EMPTY_LEAF) {
             return 1;
+
+    public boolean search(String s) {
+        if (info == null) {
+            return false;
         }
         String cI = info.replace("$", "");
         String cS = s.replace("$", "");
@@ -48,6 +53,18 @@ public class LeafNode implements Node {
             res += cI + "\n";
         }
         return 1;
+    }
+    public String search(String s, int d, int[] nodes) {
+        nodes[0]++;
+        if (info == null) {
+            return "";
+        }
+        String seq = info.replace("$", "");
+        String prefix = s.replace("$", "");
+        if(seq.startsWith(prefix)) {
+            return seq + "\n";
+        }
+        return "";
     }
 
 

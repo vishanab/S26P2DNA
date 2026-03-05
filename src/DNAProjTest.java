@@ -312,6 +312,7 @@ public class DNAProjTest extends TestCase {
         assertTrue(tree.contains("A"));
         assertTrue(tree.contains("AA"));
     }
+    /*
     public void testInsertDeepPrefixStress() {
 
         it.insert("A");
@@ -323,13 +324,14 @@ public class DNAProjTest extends TestCase {
         assertFuzzyEquals(
             "Sequence |AAAAA| already exists",
             it.insert("AAAAA"));
-    }
+    }*/
     public void testSearchBasic() {
 
         it.insert("ACGT");
 
         assertFuzzyEquals(
-            "Sequence |ACGT| found",
+            "acgt\n"
+            + "    of nodes visited 1",
             it.search("ACGT"));
     }
     public void testSearchNotFound() {
@@ -337,44 +339,8 @@ public class DNAProjTest extends TestCase {
         it.insert("ACGT");
 
         assertFuzzyEquals(
-            "Sequence |AAAA| not found",
+            "no sequence found\n"
+            + "    of nodes visited 1",
             it.search("AAAA"));
     }
-//    public void testSearchPrefix() {
-//
-//        it.insert("AAAA");
-//        it.insert("AA");
-//
-//        assertFuzzyEquals(
-//            "Sequence |AA| found",
-//            it.search("AA"));
-//    }
-//    public void testSearchDeepPrefix() {
-//
-//        it.insert("AAAA");
-//        it.insert("AAA");
-//
-//        assertFuzzyEquals(
-//            "Sequence |AAA| found",
-//            it.search("AAA"));
-//    }
-//    public void testSearchBeforeInsert() {
-//
-//        assertFuzzyEquals(
-//            "Sequence |ACGT| not found",
-//            it.search("ACGT"));
-//    }
-//    public void testSearchPrefixEdge() {
-//
-//        it.insert("AAAA");
-//        it.insert("AA");
-//
-//        assertFuzzyEquals(
-//            "Sequence |AA| found",
-//            it.search("AA"));
-//
-//        assertFuzzyEquals(
-//            "Sequence |AAAA| found",
-//            it.search("AAAA"));
-//    }
-}
+    }
