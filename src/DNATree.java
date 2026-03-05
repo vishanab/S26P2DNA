@@ -6,6 +6,10 @@ public class DNATree {
         root = LeafNode.EMPTY_LEAF;
     }
 
+    
+    public String search(String s) {
+        return "";
+    }
 
     public String print() {
         return root.print(0);
