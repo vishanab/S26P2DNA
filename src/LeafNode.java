@@ -8,7 +8,7 @@ public class LeafNode implements Node {
     }
 
 
-    public Node insert(String s) {
+    public Node insert(String s, int depth) {
         if (this == EMPTY_LEAF) {
             return new LeafNode(s);
         }
@@ -21,31 +21,11 @@ public class LeafNode implements Node {
             return this;
         }
 
-        String a = info;
-        String b = s;
-
-        InternalNode root = new InternalNode(EMPTY_LEAF);
-        InternalNode current = root;
-
-        int depth = 0;
-
-        while (depth < a.length() && depth < b.length() &&
-               a.charAt(depth) == b.charAt(depth)) {
-
-            int idx = current.indexOfChar(a.charAt(depth));
-            InternalNode next = new InternalNode(EMPTY_LEAF);
-            current.kids[idx] = next;
-            current = next;
-            depth++;
-        }
-
-        int i1 = current.indexOfChar(a.charAt(depth));
-        int i2 = current.indexOfChar(b.charAt(depth));
-
-        current.kids[i1] = new LeafNode(a);
-        current.kids[i2] = new LeafNode(b);
-
-        return root;
+        InternalNode newNode = new InternalNode(EMPTY_LEAF);
+        newNode.insert(this.info, depth);
+        newNode.insert(s, depth);
+        return newNode;
+        
     }
 
 
@@ -57,11 +37,17 @@ public class LeafNode implements Node {
     }
 
 
-    public boolean search(String s) {
-        if (info == null) {
-            return false;
+    public int search(String s, int depth, String res) {
+        if (this == EMPTY_LEAF) {
+            return 1;
         }
-        return (info).equals(s);
+        String cI = info.replace("$", "");
+        String cS = s.replace("$", "");
+        
+        if (cI.startsWith(cS)) {
+            res += cI + "\n";
+        }
+        return 1;
     }
 
 

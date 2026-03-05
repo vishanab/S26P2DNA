@@ -10,15 +10,9 @@ public class InternalNode implements Node{
     }
     
     
-    public Node insert(String s) {
-        int ind = indexOfChar(s.charAt(0));
-
-        if (s.length() == 1) {
-            kids[ind] = kids[ind].insert(s);
-        }
-        else {
-            kids[ind] = kids[ind].insert(s.substring(1));
-        }
+    public Node insert(String s, int depth) {
+        int ind = indexOfChar(s.charAt(depth));
+        kids[ind] = kids[ind].insert(s, depth + 1);
         return this;
     }
 
@@ -31,14 +25,18 @@ public class InternalNode implements Node{
 
 
 
-    public boolean search(String s) {
-        int ind = indexOfChar(s.charAt(0));
-
-        if (s.length() == 1) {
-            return kids[ind].search("");
+    public int search(String s, int depth, String res) {
+        int nV = 1; 
+        if (depth < s.length()) {
+            char c = s.charAt(depth);
+            int ind = indexOfChar(c);
+            nV += kids[ind].search(s, depth + 1, res);
+        } else {
+            for (Node kid : kids) {
+                nV += kid.search(s, depth, res);
+            }
         }
-
-        return kids[ind].search(s.substring(1));
+        return nV;
     }
     
     public int indexOfChar(char c) {

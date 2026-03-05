@@ -6,13 +6,15 @@ public class DNATree {
         root = LeafNode.EMPTY_LEAF;
     }
     public void insert(String s) {
-        root = root.insert(s + "$");
+        root = root.insert(s + "$", 0);
     }
-    public boolean search(String s) {
-        if (!s.endsWith("$")) {
-            s = s + "$";
+    public String search(String s) {
+        String res = "";
+        int vis = root.search(s, 0, res);
+        if (res.length() == 0) {
+            return "No sequence found\n# of nodes visited: " + vis;
         }
-        return root.search(s);
+        return res.toString() + "# of nodes visited: " + vis;
     }
     public void remove(String s) {
         root = root.remove(s + "$");
