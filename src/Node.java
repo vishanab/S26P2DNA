@@ -4,10 +4,13 @@ public interface Node {
 
 
     Node remove(String s);
-
-
-    String print();
-
-
+    
     boolean search(String s);
+
+    String print(int d);
+    
+    String printLengths(int d);
+    
+    String printStats(int d);
+
 }
