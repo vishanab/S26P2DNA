@@ -40,6 +40,7 @@ public class DNADB implements DNA {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
         }
+        //tree.insert(sequence);
         return "Sequence |" + sequence +"| inserted";
      }
 
@@ -63,6 +64,7 @@ public class DNADB implements DNA {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
         }
+        //tree.remove(sequence);
         return "Sequence |" + sequence +"| removed";
     }
 
@@ -73,7 +75,7 @@ public class DNADB implements DNA {
      * @return the print string
      */
     public String print() {
-        return null;
+        return tree.print();
     }
 
 
@@ -83,7 +85,7 @@ public class DNADB implements DNA {
      * @return the print string
      */
     public String printLengths() {
-        return null;
+        return tree.printLengths();
     }
 
 
@@ -93,7 +95,7 @@ public class DNADB implements DNA {
      * @return the print string
      */
     public String printStats() {
-        return null;
+        return tree.printStats();
     }
 
 
@@ -121,6 +123,13 @@ public class DNADB implements DNA {
                 }
             }
         }
+        /*
+        boolean found = tree.search(sequence);
+        if(found) {
+            return "Sequence |" + sequence + "| found";
+        }
+        return "Sequence |" + sequence + "| not found";
+        */
         return null;
     }
 }
