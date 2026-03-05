@@ -63,7 +63,8 @@ public class LeafNode implements Node {
         if (info == null) {
             return " ".repeat(d) + "E\n";
         }
-        return " ".repeat(d) + info + "\n";
+        String s = info.replace("$", "");
+        return " ".repeat(d) + s + "\n";
     }
 
 
@@ -71,7 +72,8 @@ public class LeafNode implements Node {
         if (info == null) {
             return " ".repeat(d) + "E\n";
         }
-        return " ".repeat(d) + info + " " + info.length() + "\n";
+        String s = info.replace("$", "");
+        return " ".repeat(d) + s + " " + s.length() + "\n";
     }
 
 
@@ -79,11 +81,12 @@ public class LeafNode implements Node {
         if (info == null) {
             return " ".repeat(d) + "E\n";
         }
+        String s = info.replace("$", "");
         int A = 0;
         int C = 0;
         int G = 0;
         int T = 0;
-        for (char c : info.toCharArray()) {
+        for (char c : s.toCharArray()) {
             if (c == 'A') {
                 A++;
             }
@@ -97,9 +100,9 @@ public class LeafNode implements Node {
                 T++;
             }
         }
-        int l = info.length();
-        String output = String.format("%s%s A:%.2f C:%.2f G:.2f T:%.2f\n", " "
-            .repeat(d), info, A * 100.0 / l, C * 100.0 / l, G * 100.0 / l, T
+        int l = s.length();
+        String output = String.format("%s%s A:%.2f C:%.2f G:%.2f T:%.2f\n", " "
+            .repeat(d), s, A * 100.0 / l, C * 100.0 / l, G * 100.0 / l, T
                 * 100.0 / l);
 
         return output;
