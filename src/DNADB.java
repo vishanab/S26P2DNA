@@ -40,7 +40,7 @@ public class DNADB implements DNA {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
         }
-        if (tree.search(sequence)) {
+        if (tree.searchCheck(sequence)) {
             return "Sequence |" + sequence +"| already exists";
         }
         tree.insert(sequence);
@@ -67,7 +67,7 @@ public class DNADB implements DNA {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
         }
-        if (!tree.search(sequence)) {
+        if (!tree.searchCheck(sequence)) {
             return "Sequence |" + sequence +"| does not exist";
         }
         tree.remove(sequence);
@@ -129,10 +129,12 @@ public class DNADB implements DNA {
                 }
             }
         }
-        boolean found = tree.search(sequence);
-        if(found) {
+        /*
+        boolean found = tree.searchCheck(sequence);
+        if(!found) {
             return "Sequence |" + sequence + "| found";
-        }
-        return "Sequence |" + sequence + "| not found";
+        }*/
+        //return "Sequence |" + sequence + "| not found";
+        return tree.search(sequence);
     }
 }

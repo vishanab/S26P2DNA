@@ -5,20 +5,44 @@ public class DNATree {
     public DNATree() {
         root = LeafNode.EMPTY_LEAF;
     }
+
+
     public void insert(String s) {
         root = root.insert(s + "$");
     }
-    public boolean search(String s) {
+
+
+    public boolean searchCheck(String s) {
         if (!s.endsWith("$")) {
             s = s + "$";
         }
         return root.search(s);
     }
+
+
+    public String search(String s) {
+        /*
+        if (!s.endsWith("$")) {
+            s = s + "$";
+        }*/
+
+        int[] nodes = { 0 };
+        String output = root.search(s, 0, nodes);
+        if (output.isEmpty()) {
+            output = "No sequence found\n";
+        }
+        output += "# of nodes visited: " + nodes[0];
+        return output;
+    }
+
+
     public void remove(String s) {
         root = root.remove(s + "$");
     }
+
+
     public String print() {
-        return "tree dump:\n"+root.print(0);
+        return "tree dump:\n" + root.print(0);
     }
 
 
@@ -28,6 +52,6 @@ public class DNATree {
 
 
     public String printStats() {
-        return "tree dump with stats:\n"+ root.printStats(0);
+        return "tree dump with stats:\n" + root.printStats(0);
     }
 }

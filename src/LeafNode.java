@@ -55,13 +55,23 @@ public class LeafNode implements Node {
         }
         return this;
     }
-
-
     public boolean search(String s) {
         if (info == null) {
             return false;
         }
         return (info).equals(s);
+    }
+    public String search(String s, int d, int[] nodes) {
+        nodes[0]++;
+        if (info == null) {
+            return "";
+        }
+        String seq = info.replace("$", "");
+        String prefix = s.replace("$", "");
+        if(seq.startsWith(prefix)) {
+            return seq + "\n";
+        }
+        return "";
     }
 
 

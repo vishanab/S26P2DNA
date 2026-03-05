@@ -5,7 +5,9 @@ public interface Node {
 
     Node remove(String s);
     
-    boolean search(String s);
+    boolean search(String search);
+    
+    String search(String s, int d, int[] nodes);
 
     String print(int d);
     
