@@ -8,22 +8,15 @@ public class DNATree {
 
 
     public void insert(String s) {
-        root = root.insert(s + "$", 0);
+        root = root.insert(s + "$");
     }
-
-    public String search(String s) {
-        String res = "";
-        int vis = root.search(s, 0, res);
-        if (res.length() == 0) {
-            return "No sequence found\n# of nodes visited: " + vis;
-
 
 
     public boolean searchCheck(String s) {
         if (!s.endsWith("$")) {
             s = s + "$";
         }
-        return res.toString() + "# of nodes visited: " + vis;
+        return root.search(s);
     }
 
 

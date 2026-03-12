@@ -40,12 +40,7 @@ public class DNADB implements DNA {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
         }
-
-        String res = tree.search(sequence + "$");
-        if (!res.startsWith("No sequence found")) {
-
         if (tree.searchCheck(sequence)) {
-
             return "Sequence |" + sequence +"| already exists";
         }
         tree.insert(sequence);
@@ -72,12 +67,7 @@ public class DNADB implements DNA {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
         }
-
-        String res = tree.search(sequence + "$");
-        if (res.startsWith("No sequence found")) {
-
         if (!tree.searchCheck(sequence)) {
-
             return "Sequence |" + sequence +"| does not exist";
         }
         tree.remove(sequence);
@@ -139,8 +129,6 @@ public class DNADB implements DNA {
                 }
             }
         }
-        String res = tree.search(sequence + "$");
-        if(res.startsWith("No sequence found")) {
         /*
         boolean found = tree.searchCheck(sequence);
         if(!found) {
