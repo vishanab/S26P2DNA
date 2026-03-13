@@ -12,14 +12,12 @@ public class InternalNode implements Node {
 
 
     public Node insert(String s) {
-        int ind = indexOfChar(s.charAt(0));
-
-        if (s.length() == 1) {
-            kids[ind] = kids[ind].insert(s);
-        }
-        else {
-            kids[ind] = kids[ind].insert(s.substring(1));
-        }
+        return insert(s, 0);
+    }
+    
+    public Node insert(String s, int depth) {
+        int ind = indexOfChar(s.charAt(depth));
+        kids[ind] = kids[ind].insert(s, depth + 1);
         return this;
     }
 
@@ -27,21 +25,36 @@ public class InternalNode implements Node {
     public Node remove(String s) {
         int ind = indexOfChar(s.charAt(0));
         kids[ind] = kids[ind].remove(s.substring(1));
+        LeafNode a = null;
+        int nEmpt = 0;
+        for (Node n : kids) {
+            if (n != LeafNode.EMPTY_LEAF) {
+                nEmpt++;
+                if (n instanceof LeafNode) {
+                    a = (LeafNode) n;
+                } else {
+                    return this;
+                }
+            }
+        }
+        if (nEmpt == 1 && a != null) {
+            return a;
+        }
         return this;
     }
 
 
     public boolean search(String s) {
         int ind = indexOfChar(s.charAt(0));
-
-        if (s.length() == 1) {
-            return kids[ind].search(s);
-        }
-
         return kids[ind].search(s.substring(1));
 
     }
 
+    public boolean searchExact(String s, int depth) {
+        if (depth >= s.length()) return false;
+        int ind = indexOfChar(s.charAt(depth));
+        return kids[ind].searchExact(s, depth + 1);
+    }
 
     public String search(String s, int d, int[] nodes) {
         nodes[0]++;

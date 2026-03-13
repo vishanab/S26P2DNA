@@ -116,7 +116,7 @@ public class DNADB implements DNA {
             return "Bad input: Sequence may not be null\r\n";
         }
         if (sequence.equals("")) {
-            return "no sequence found\n" + "    of nodes visited 1";
+            return tree.search("");
         }
         for (int i = 0; i < sequence.length(); i++) {
             char letter = sequence.charAt(i);

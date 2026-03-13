@@ -312,7 +312,7 @@ public class DNAProjTest extends TestCase {
         assertTrue(tree.contains("A"));
         assertTrue(tree.contains("AA"));
     }
-    /*
+
     public void testInsertDeepPrefixStress() {
 
         it.insert("A");
@@ -324,7 +324,7 @@ public class DNAProjTest extends TestCase {
         assertFuzzyEquals(
             "Sequence |AAAAA| already exists",
             it.insert("AAAAA"));
-    }*/
+    }
     public void testSearchBasic() {
 
         it.insert("ACGT");
@@ -343,4 +343,69 @@ public class DNAProjTest extends TestCase {
             + "    of nodes visited 1",
             it.search("AAAA"));
     }
+    public void testDuplicateA() {
+
+        assertFuzzyEquals(
+            "Sequence |A| inserted",
+            it.insert("A"));
+
+        assertFuzzyEquals(
+            "Sequence |A| already exists",
+            it.insert("A"));
     }
+    public void testExtremeDuplicates() {
+
+        assertFuzzyEquals(
+            "Sequence |A| inserted",
+            it.insert("A"));
+
+        assertFuzzyEquals(
+            "Sequence |AA| inserted",
+            it.insert("AA"));
+
+        assertFuzzyEquals(
+            "Sequence |AAA| inserted",
+            it.insert("AAA"));
+
+        assertFuzzyEquals(
+            "Sequence |AAAA| inserted",
+            it.insert("AAAA"));
+
+        assertFuzzyEquals(
+            "Sequence |AAAAA| inserted",
+            it.insert("AAAAA"));
+
+        assertFuzzyEquals(
+            "Sequence |AAAAAA| inserted",
+            it.insert("AAAAAA"));
+
+        assertFuzzyEquals(
+            "Sequence |AAAAAAA| inserted",
+            it.insert("AAAAAAA"));
+
+        // duplicate deep prefix
+        assertFuzzyEquals(
+            "Sequence |AAAAAAA| already exists",
+            it.insert("AAAAAAA"));
+
+        // duplicate mid prefix
+        assertFuzzyEquals(
+            "Sequence |AAAA| already exists",
+            it.insert("AAAA"));
+
+        // duplicate short prefix
+        assertFuzzyEquals(
+            "Sequence |A| already exists",
+            it.insert("A"));
+
+        // duplicate after deep tree already built
+        assertFuzzyEquals(
+            "Sequence |AAAAAA| already exists",
+            it.insert("AAAAAA"));
+
+        // duplicate long chain
+        assertFuzzyEquals(
+            "Sequence |AAA| already exists",
+            it.insert("AAA"));
+    }
+ }

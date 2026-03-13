@@ -7,47 +7,39 @@ public class LeafNode implements Node {
         this.info = s;
     }
 
-
     public Node insert(String s) {
+        return insert(s, 0);
+    }
+    
+    public Node insert(String s, int depth) {
         if (this == EMPTY_LEAF) {
             return new LeafNode(s);
         }
-
-        if (s.length() == 0) {
-            return this;
-        }
-
         if (info.equals(s)) {
             return this;
         }
 
-        String a = info;
-        String b = s;
-
         InternalNode root = new InternalNode(EMPTY_LEAF);
         InternalNode current = root;
 
-        int depth = 0;
-
-        while (depth < a.length() && depth < b.length() &&
-               a.charAt(depth) == b.charAt(depth)) {
-
-            int idx = current.indexOfChar(a.charAt(depth));
+        int d = depth;
+        while (d < info.length() - 1 && d < s.length() - 1 &&
+            info.charAt(d) == s.charAt(d)) {
+            int idx = current.indexOfChar(info.charAt(d));
             InternalNode next = new InternalNode(EMPTY_LEAF);
             current.kids[idx] = next;
             current = next;
-            depth++;
+            d++;
         }
 
-        int i1 = current.indexOfChar(a.charAt(depth));
-        int i2 = current.indexOfChar(b.charAt(depth));
+        char c1 = info.charAt(d);
+        char c2 = s.charAt(d);
 
-        current.kids[i1] = new LeafNode(a);
-        current.kids[i2] = new LeafNode(b);
+        current.kids[current.indexOfChar(c1)] = new LeafNode(info);
+        current.kids[current.indexOfChar(c2)] = new LeafNode(s);
 
         return root;
     }
-
 
     public Node remove(String s) {
         if (info != null && info.equals(s)) {
@@ -59,8 +51,16 @@ public class LeafNode implements Node {
         if (info == null) {
             return false;
         }
-        return (info).equals(s);
+        if (s.length() == 0) {
+            return true;
+        }
+        return info.endsWith(s);
     }
+    
+    public boolean searchExact(String s, int depth) {
+        return info != null && info.equals(s);
+    }
+    
     public String search(String s, int d, int[] nodes) {
         nodes[0]++;
         if (info == null) {

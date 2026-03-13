@@ -13,10 +13,7 @@ public class DNATree {
 
 
     public boolean searchCheck(String s) {
-        if (!s.endsWith("$")) {
-            s = s + "$";
-        }
-        return root.search(s);
+        return root.searchExact(s + "$", 0);
     }
 
 
