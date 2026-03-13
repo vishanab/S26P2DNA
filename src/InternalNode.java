@@ -1,5 +1,5 @@
 /**
- * Implement InternalNode class
+ * Implement the InternalNode class
  *
  * @author Vishana Baskaran and Sital Paudel
  * @version 3/13/26
