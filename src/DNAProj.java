@@ -1,5 +1,6 @@
 /**
- * The project relates to building a specialized tree database for DNA sequencing
+ * The project relates to building a specialized tree database for DNA 
+ * sequencing
  */
 
 import java.io.IOException;

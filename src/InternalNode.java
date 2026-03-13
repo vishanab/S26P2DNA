@@ -1,5 +1,13 @@
-
+/**
+ * Implement InternalNode class
+ *
+ * @author Vishana Baskaran and Sital Paudel
+ * @version 3/13/26
+ */
 public class InternalNode implements Node {
+    /**
+     * This is a variable that stores children of internal node
+     */
     public Node[] kids;
 
     public InternalNode(Node flyweight) {
@@ -22,22 +30,27 @@ public class InternalNode implements Node {
     }
 
 
-    public Node remove(String s) {
-        int ind = indexOfChar(s.charAt(0));
-        kids[ind] = kids[ind].remove(s.substring(1));
-        LeafNode a = null;
+    public Node remove(String s, int depth) {
+        int ind = indexOfChar(s.charAt(depth));
+        kids[ind] = kids[ind].remove(s, depth + 1);
+        Node a = null;
         int nEmpt = 0;
+        boolean isInternal = false;
         for (Node n : kids) {
             if (n != LeafNode.EMPTY_LEAF) {
                 nEmpt++;
-                if (n instanceof LeafNode) {
-                    a = (LeafNode) n;
-                } else {
-                    return this;
+                a = n;
+                if (n instanceof InternalNode) {
+                    isInternal = true;
                 }
             }
         }
-        if (nEmpt == 1 && a != null) {
+
+        if (nEmpt == 0) {
+            return LeafNode.EMPTY_LEAF;
+        }
+        
+        if (nEmpt == 1 && !isInternal) {
             return a;
         }
         return this;

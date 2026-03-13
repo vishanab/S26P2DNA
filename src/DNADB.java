@@ -36,16 +36,17 @@ public class DNADB implements DNA {
         }
         for (int i = 0; i < sequence.length(); i++) {
             char letter = sequence.charAt(i);
-            if (letter != 'A' && letter != 'C' && letter != 'G' && letter != 'T') {
+            if (letter != 'A' && letter != 'C' && letter != 'G' 
+                && letter != 'T') {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
         }
         if (tree.searchCheck(sequence)) {
-            return "Sequence |" + sequence +"| already exists";
+            return "Sequence |" + sequence + "| already exists";
         }
         tree.insert(sequence);
-        return "Sequence |" + sequence +"| inserted";
-     }
+        return "Sequence |" + sequence + "| inserted";
+    }
 
 
     // ----------------------------------------------------------
@@ -63,15 +64,16 @@ public class DNADB implements DNA {
         }
         for (int i = 0; i < sequence.length(); i++) {
             char letter = sequence.charAt(i);
-            if (letter != 'A' && letter != 'C' && letter != 'G' && letter != 'T') {
+            if (letter != 'A' && letter != 'C' && letter != 'G' 
+                && letter != 'T') {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
         }
         if (!tree.searchCheck(sequence)) {
-            return "Sequence |" + sequence +"| does not exist";
+            return "Sequence |" + sequence + "| does not exist";
         }
         tree.remove(sequence);
-        return "Sequence |" + sequence +"| removed";
+        return "Sequence |" + sequence + "| removed";
     }
 
 
@@ -120,12 +122,13 @@ public class DNADB implements DNA {
         }
         for (int i = 0; i < sequence.length(); i++) {
             char letter = sequence.charAt(i);
-            if (letter != 'A' && letter != 'C' && letter != 'G' && letter != 'T') {
-                if (i == sequence.length()-1 && letter == '$') {
+            if (letter != 'A' && letter != 'C' && letter != 'G' 
+                && letter != 'T') {
+                if (i == sequence.length() - 1 && letter == '$') {
                     continue;
                 }
                 else {
-                    return "Bad input sequence |"+sequence+"|\r\n";
+                    return "Bad input sequence |" + sequence + "|\r\n";
                 }
             }
         }

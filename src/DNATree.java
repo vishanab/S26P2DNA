@@ -1,4 +1,10 @@
 
+/**
+ * Implement a DNA Tree
+ *
+ * @author Vishana Baskaran and Sital Paudel
+ * @version 3/13/26
+ */
 public class DNATree {
     private Node root;
 
@@ -34,7 +40,7 @@ public class DNATree {
 
 
     public void remove(String s) {
-        root = root.remove(s + "$");
+        root = root.remove(s + "$", 0);
     }
 
 

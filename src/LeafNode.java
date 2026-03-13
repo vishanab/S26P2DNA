@@ -1,6 +1,17 @@
-
+/**
+ * Implement LeafNode class
+ *
+ * @author Vishana Baskaran and Sital Paudel
+ * @version 3/13/26
+ */
 public class LeafNode implements Node {
+    /**
+     * LeafNode represents empty space in a tree
+     */
     public static final LeafNode EMPTY_LEAF = new LeafNode(null);
+    /**
+     * String stores actual DNA sequence in leaf node
+     */
     String info;
 
     public LeafNode(String s) {
@@ -41,7 +52,7 @@ public class LeafNode implements Node {
         return root;
     }
 
-    public Node remove(String s) {
+    public Node remove(String s, int depth) {
         if (info != null && info.equals(s)) {
             return EMPTY_LEAF;
         }
@@ -68,7 +79,7 @@ public class LeafNode implements Node {
         }
         String seq = info.replace("$", "");
         String prefix = s.replace("$", "");
-        if(seq.startsWith(prefix)) {
+        if (seq.startsWith(prefix)) {
             return seq + "\n";
         }
         return "";
@@ -98,27 +109,27 @@ public class LeafNode implements Node {
             return " ".repeat(d) + "E\n";
         }
         String s = info.replace("$", "");
-        int A = 0;
-        int C = 0;
-        int G = 0;
-        int T = 0;
-        for (char c : s.toCharArray()) {
-            if (c == 'A') {
-                A++;
+        int a = 0;
+        int c = 0;
+        int g = 0;
+        int t = 0;
+        for (char ch : s.toCharArray()) {
+            if (ch == 'A') {
+                a++;
             }
-            if (c == 'C') {
-                C++;
+            if (ch == 'C') {
+                c++;
             }
-            if (c == 'G') {
-                G++;
+            if (ch == 'G') {
+                g++;
             }
-            if (c == 'T') {
-                T++;
+            if (ch == 'T') {
+                t++;
             }
         }
         int l = s.length();
         String output = String.format("%s%s A:%.2f C:%.2f G:%.2f T:%.2f\n", " "
-            .repeat(d), s, A * 100.0 / l, C * 100.0 / l, G * 100.0 / l, T
+            .repeat(d), s, a * 100.0 / l, c * 100.0 / l, g * 100.0 / l, t
                 * 100.0 / l);
 
         return output;

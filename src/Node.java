@@ -4,7 +4,7 @@ public interface Node {
 
     Node insert(String s, int depth);
 
-    Node remove(String s);
+    Node remove(String s, int depth);
     
     boolean search(String search);
     
