@@ -290,6 +290,9 @@ public class DNAProjTest extends TestCase {
             it.insert("AAAAT"));
     }
     
+    /**
+     * tests for an early split
+     */
     public void testInsertSplitEarly() {
 
         assertFuzzyEquals(
