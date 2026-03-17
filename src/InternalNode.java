@@ -125,7 +125,7 @@ public class InternalNode implements Node {
      * 
      * @param s
      *            The node's sequence
-     * @param depth
+     * @param d
      *            the given depth to start with
      * @param nodes
      *            array being used to track the number of nodes checked
@@ -176,6 +176,8 @@ public class InternalNode implements Node {
     /**
      * find and display node at a specifc depth
      * 
+     * @param d
+     *            the depth to start at
      * @return a String displaying the information
      */
     public String print(int d) {
@@ -190,6 +192,8 @@ public class InternalNode implements Node {
     /**
      * find the length for a node at a specifc depth
      * 
+     * @param d
+     *            the depth to start at
      * @return a String displaying the information
      */
     public String printLengths(int d) {
@@ -204,6 +208,8 @@ public class InternalNode implements Node {
     /**
      * find the stats for a node at a specifc depth
      * 
+     * @param d
+     *            the depth to start at
      * @return a String displaying the information
      */
     public String printStats(int d) {

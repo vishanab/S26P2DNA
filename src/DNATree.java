@@ -19,7 +19,7 @@ public class DNATree {
     /**
      * insert a node with a given sequence into the tree
      * 
-     * @param sequence
+     * @param s
      *            The sequence to insert
      */
     public void insert(String s) {
@@ -30,7 +30,7 @@ public class DNATree {
     /**
      * Search if a node containing a given string is in the tree
      * 
-     * @param sequence
+     * @param s
      *            The sequence to search for
      * @return true or false for the string being present
      */
@@ -42,7 +42,7 @@ public class DNATree {
     /**
      * Search if a node containing a given string is in the tree
      * 
-     * @param sequence
+     * @param s
      *            The sequence to search for
      * @return the string output
      */
@@ -60,7 +60,7 @@ public class DNATree {
     /**
      * remove a node with a specifc sequence from the tree
      * 
-     * @param sequence
+     * @param s
      *            The sequence to remove
      */
     public void remove(String s) {

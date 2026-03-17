@@ -73,6 +73,8 @@ public interface Node {
     /**
      * find and display node at a specifc depth
      * 
+     * @param d
+     *            the depth to start at
      * @return a String displaying the information
      */
     String print(int d);
@@ -81,6 +83,8 @@ public interface Node {
     /**
      * find the length for a node at a specifc depth
      * 
+     * @param d
+     *            the depth to start at
      * @return a String displaying the information
      */
     String printLengths(int d);
@@ -89,6 +93,8 @@ public interface Node {
     /**
      * find the stats for a node at a specifc depth
      * 
+     * @param d
+     *            the depth to start at
      * @return a String displaying the information
      */
     String printStats(int d);
