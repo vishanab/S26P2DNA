@@ -122,8 +122,7 @@ public class DNADB implements DNA {
         }
         for (int i = 0; i < sequence.length(); i++) {
             char letter = sequence.charAt(i);
-            if (letter != 'A' && letter != 'C' && letter != 'G' 
-                && letter != 'T') {
+            if (letter != 'A' && letter != 'C' && letter != 'G' && letter != 'T') {
                 if (i == sequence.length() - 1 && letter == '$') {
                     continue;
                 }
@@ -132,12 +131,6 @@ public class DNADB implements DNA {
                 }
             }
         }
-        /*
-        boolean found = tree.searchCheck(sequence);
-        if(!found) {
-            return "Sequence |" + sequence + "| found";
-        }*/
-        //return "Sequence |" + sequence + "| not found";
         return tree.search(sequence);
     }
 }
