@@ -14,14 +14,38 @@ public class LeafNode implements Node {
      */
     String info;
 
+    /**
+     * create a new internal node
+     * 
+     * @param s
+     *            The node's sequence
+     */
     public LeafNode(String s) {
         this.info = s;
     }
 
+
+    /**
+     * insert a new node
+     * 
+     * @param s
+     *            The node's sequence
+     * @return the root
+     */
     public Node insert(String s) {
         return insert(s, 0);
     }
-    
+
+
+    /**
+     * insert a new node
+     * 
+     * @param s
+     *            The node's sequence
+     * @param depth
+     *            the given depth to start with
+     * @return the root
+     */
     public Node insert(String s, int depth) {
         if (this == EMPTY_LEAF) {
             return new LeafNode(s);
@@ -34,8 +58,8 @@ public class LeafNode implements Node {
         InternalNode current = root;
 
         int d = depth;
-        while (d < info.length() - 1 && d < s.length() - 1 &&
-            info.charAt(d) == s.charAt(d)) {
+        while (d < info.length() - 1 && d < s.length() - 1 && info.charAt(
+            d) == s.charAt(d)) {
             int idx = current.indexOfChar(info.charAt(d));
             InternalNode next = new InternalNode(EMPTY_LEAF);
             current.kids[idx] = next;
@@ -52,12 +76,30 @@ public class LeafNode implements Node {
         return root;
     }
 
+
+    /**
+     * remove a node
+     * 
+     * @param s
+     *            The node's sequence
+     * @param depth
+     *            the given depth to start with
+     * @return the removed node
+     */
     public Node remove(String s, int depth) {
         if (info != null && info.equals(s)) {
             return EMPTY_LEAF;
         }
         return this;
     }
+
+    /**
+     * check if a node contains a given sequence
+     * 
+     * @param s
+     *            The given sequence
+     * @return true if sequence found
+     */
     public boolean search(String s) {
         if (info == null) {
             return false;
@@ -65,13 +107,33 @@ public class LeafNode implements Node {
         if (s.length() == 0) {
             return true;
         }
-        return info.endsWith(s);
+        return info.startsWith(s);
     }
-    
+
+    /**
+     * check if a node contains a given sequence
+     * 
+     * @param s
+     *            The node's sequence
+     * @param depth
+     *            the given depth to start with
+     * @return true if sequence found
+     */
     public boolean searchExact(String s, int depth) {
         return info != null && info.equals(s);
     }
-    
+
+    /**
+     * check if a node contains a given sequence
+     * 
+     * @param s
+     *            The node's sequence
+     * @param depth
+     *            the given depth to start with
+     * @param nodes
+     *            array being used to track the number of nodes checked
+     * @return true if sequence found
+     */
     public String search(String s, int d, int[] nodes) {
         nodes[0]++;
         if (info == null) {
@@ -86,6 +148,11 @@ public class LeafNode implements Node {
     }
 
 
+    /**
+     * find and display node at a specifc depth
+     * 
+     * @return a String displaying the information
+     */
     public String print(int d) {
         if (info == null) {
             return " ".repeat(d) + "E\n";
@@ -95,6 +162,11 @@ public class LeafNode implements Node {
     }
 
 
+    /**
+     * find the length for a node at a specifc depth
+     * 
+     * @return a String displaying the information
+     */
     public String printLengths(int d) {
         if (info == null) {
             return " ".repeat(d) + "E\n";
@@ -104,6 +176,11 @@ public class LeafNode implements Node {
     }
 
 
+    /**
+     * find the stats for a node at a specifc depth
+     * 
+     * @return a String displaying the information
+     */
     public String printStats(int d) {
         if (info == null) {
             return " ".repeat(d) + "E\n";

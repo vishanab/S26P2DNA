@@ -184,7 +184,12 @@ public class DNAProjTest extends TestCase {
         assertFuzzyEquals(
             "Sequence |ACGT| removed",
             it.remove("ACGT"));
-     }
+    }
+    
+    
+    /**
+     * tests for basic insert method
+     */
     public void testInsertBasic() {
         assertFuzzyEquals(
             "Sequence |ACGT| inserted",
@@ -202,6 +207,11 @@ public class DNAProjTest extends TestCase {
             "Sequence |AA| inserted",
             it.insert("AA"));
     }
+    
+    
+    /**
+     * tests for duplicate issues when inserting
+     */
     public void testInsertDuplicate() {
 
         assertFuzzyEquals(
@@ -212,6 +222,10 @@ public class DNAProjTest extends TestCase {
             "Sequence |ACGT| already exists",
             it.insert("ACGT"));
     }
+    
+    /**
+     * tests for inserting with prefix long first
+     */
     public void testInsertPrefixLongFirst() {
 
         assertFuzzyEquals(
@@ -222,6 +236,10 @@ public class DNAProjTest extends TestCase {
             "Sequence |AA| inserted",
             it.insert("AA"));
     }
+    
+    /**
+     * tests for inserting with prefix short first
+     */
     public void testInsertPrefixShortFirst() {
 
         assertFuzzyEquals(
@@ -232,6 +250,10 @@ public class DNAProjTest extends TestCase {
             "Sequence |AAAA| inserted",
             it.insert("AAAA"));
     }
+    
+    /**
+     * tests for inserting with each variation of first letter
+     */
     public void testInsertDifferentFirstLetter() {
 
         assertFuzzyEquals(
@@ -250,6 +272,9 @@ public class DNAProjTest extends TestCase {
             "Sequence |TTTT| inserted",
             it.insert("TTTT"));
     }
+    /**
+     * tests for inserting with same prefix
+     */
     public void testInsertSharedPrefix() {
 
         assertFuzzyEquals(
@@ -264,6 +289,7 @@ public class DNAProjTest extends TestCase {
             "Sequence |AAAAT| inserted",
             it.insert("AAAAT"));
     }
+    
     public void testInsertSplitEarly() {
 
         assertFuzzyEquals(
@@ -274,35 +300,40 @@ public class DNAProjTest extends TestCase {
             "Sequence |AGGT| inserted",
             it.insert("AGGT"));
     }
-//    public void testInsertMany() {
-//
-//        it.insert("AAAA");
-//        it.insert("AAAT");
-//        it.insert("AAAG");
-//        it.insert("AAAC");
-//
-//        assertFuzzyEquals(
-//            "Sequence |AAAA| already exists",
-//            it.insert("AAAA"));
-//    }
+    
+    /**
+     * tests for inserting invalid characters
+     */
     public void testInsertInvalidCharacters() {
 
         assertFuzzyEquals(
             "Bad Input Sequence |AXT|\n",
             it.insert("AXT"));
     }
+    
+    /**
+     * tests for inserting null sequence
+     */
     public void testInsertNull() {
 
         assertFuzzyEquals(
             "Bad input: Sequence may not be null\n",
             it.insert(null));
     }
+    
+    /**
+     * tests for inserting empty string
+     */
     public void testInsertEmpty() {
 
         assertFuzzyEquals(
             "Bad input: Sequence may not be empty\n",
             it.insert(""));
     }
+    
+    /**
+     * tests if printed tree includes inserted nodes
+     */
     public void testInsertTreeStructure() {
 
         it.insert("A");
@@ -313,7 +344,10 @@ public class DNAProjTest extends TestCase {
         assertTrue(tree.contains("A"));
         assertTrue(tree.contains("AA"));
     }
-
+    
+    /**
+     * tests if deep nodes can be inserted (without duplicate issues)
+     */
     public void testInsertDeepPrefixStress() {
 
         it.insert("A");
@@ -326,6 +360,9 @@ public class DNAProjTest extends TestCase {
             "Sequence |AAAAA| already exists",
             it.insert("AAAAA"));
     }
+    /**
+     * basic tests for searching
+     */
     public void testSearchBasic() {
 
         it.insert("ACGT");
@@ -335,6 +372,9 @@ public class DNAProjTest extends TestCase {
             + "    of nodes visited 1",
             it.search("ACGT"));
     }
+    /**
+     * tests for searching for a nonexistent node
+     */
     public void testSearchNotFound() {
 
         it.insert("ACGT");
@@ -344,6 +384,9 @@ public class DNAProjTest extends TestCase {
             + "    of nodes visited 1",
             it.search("AAAA"));
     }
+    /**
+     * tests if duplicate nodes can be inserted
+     */
     public void testDuplicateA() {
 
         assertFuzzyEquals(
@@ -354,6 +397,9 @@ public class DNAProjTest extends TestCase {
             "Sequence |A| already exists",
             it.insert("A"));
     }
+    /**
+     * tests if duplicate nodes can be inserted (hard)
+     */
     public void testExtremeDuplicates() {
 
         assertFuzzyEquals(
@@ -409,7 +455,9 @@ public class DNAProjTest extends TestCase {
             "Sequence |AAA| already exists",
             it.insert("AAA"));
     }
-    
+    /**
+     * tests inserting and removing one node
+     */
     public void testRemoveSingle() {
 
         assertFuzzyEquals(
@@ -424,7 +472,9 @@ public class DNAProjTest extends TestCase {
             "tree dump:\nE",
             it.print());
     }
-    
+    /**
+     * tests for removing a nonexistent node
+     */
     public void testRemoveNotFound() {
 
         it.insert("ACGT");
@@ -433,7 +483,9 @@ public class DNAProjTest extends TestCase {
             "Sequence |AAAA| does not exist",
             it.remove("AAAA"));
     }
-    
+    /**
+     * tests removing node correctly when nodes share a prefix
+     */
     public void testRemoveSharedPrefix() {
 
         it.insert("AAAA");
@@ -449,36 +501,9 @@ public class DNAProjTest extends TestCase {
         assertFalse(tree.contains("AAAA"));
     }
     
-//    public void testRemoveMiddlePrefix() {
-//
-//        it.insert("A");
-//        it.insert("AA");
-//        it.insert("AAA");
-//        it.insert("AAAA");
-//
-//        assertFuzzyEquals(
-//            "Sequence |AAA| removed",
-//            it.remove("AAA"));
-//
-//        String tree = it.print();
-//        
-//        System.out.println("CHAR BY CHAR:");
-//        for (char c : tree.toCharArray()) {
-//            if (c == '\n') System.out.print("[NL]");
-//            else if (c == ' ') System.out.print("[SP]");
-//            else System.out.print(c);
-//        }
-//        
-//        System.out.println("\nDIRECT TEST:");
-//        System.out.println(tree.contains("AAA\n"));
-//        System.out.println(tree.indexOf("AAA\n"));
-//
-//        assertTrue(tree.contains("A\n"));
-//        assertTrue(tree.contains("AA\n"));
-//        assertTrue(tree.contains("AAAA\n"));
-//        assertFalse(tree.contains("AAA\n"));
-//    }
-    
+    /**
+     * tests removing node deep in a tree
+     */
     public void testRemoveDeepNode() {
 
         it.insert("AAAA");
@@ -494,6 +519,9 @@ public class DNAProjTest extends TestCase {
         assertFalse(tree.contains("AAAAG"));
     }
     
+    /**
+     * tests removing node when tree structure changes
+     */
     public void testRemoveCollapse() {
 
         it.insert("AAAA");
@@ -508,7 +536,9 @@ public class DNAProjTest extends TestCase {
         assertTrue(tree.contains("AA"));
         assertFalse(tree.contains("AAAA"));
     }
-    
+    /**
+     * tests removing multiple nodes
+     */
     public void testRemoveMultiple() {
 
         it.insert("AAAA");
@@ -531,7 +561,9 @@ public class DNAProjTest extends TestCase {
         assertFalse(tree.contains("CCCC"));
         assertFalse(tree.contains("GGGG"));
     }
-    
+    /**
+     * tests searching for a sequence after removing it
+     */
     public void testSearchAfterRemove() {
 
         it.insert("AAAA");
@@ -544,7 +576,9 @@ public class DNAProjTest extends TestCase {
         assertFalse(result.contains("AAAA"));
         assertTrue(result.contains("AAAT"));
     }
-    
+    /**
+     * tests removing root
+     */
     public void testRemoveRootCollapse() {
 
         it.insert("AAAA");
@@ -653,4 +687,26 @@ public class DNAProjTest extends TestCase {
         assertTrue(tree.contains("AAAC"));
         assertTrue(tree.contains("I")); 
     }
+    /**
+     * tests index of char method
+     */
+    public void testIndexOfCharMutations() {
+        it.insert("AAAA");
+        it.insert("CCCC");
+        String tree = it.print();
+        assertTrue(tree.indexOf("AAAA") < tree.indexOf("CCCC"));
+        it.insert("GGGG");
+        it.insert("TTTT");
+        tree = it.print();
+        assertTrue(tree.indexOf("AAAA") < tree.indexOf("CCCC"));
+        assertTrue(tree.indexOf("CCCC") < tree.indexOf("GGGG"));
+        assertTrue(tree.indexOf("GGGG") < tree.indexOf("TTTT"));
+        assertFuzzyEquals(
+            "Sequence |GGGG| already exists",
+            it.insert("GGGG"));
+        assertFuzzyEquals(
+            "Sequence |TTTT| already exists",
+            it.insert("TTTT"));
+    }
+    
 }
