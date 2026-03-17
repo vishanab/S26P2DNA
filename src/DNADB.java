@@ -1,4 +1,4 @@
-//-------------------------------------------------------------------------
+// -------------------------------------------------------------------------
 
 /**
  * The database implementation for this project.
@@ -15,8 +15,7 @@ public class DNADB implements DNA {
     /**
      * Create a new DNADB object.
      */
-    public DNADB()
-    {
+    public DNADB() {
         tree = new DNATree();
     }
 
@@ -24,7 +23,9 @@ public class DNADB implements DNA {
     // ----------------------------------------------------------
     /**
      * Insert a DNA string into the database
-     * @param sequence The sequence to insert
+     * 
+     * @param sequence
+     *            The sequence to insert
      * @return The outcomes message string
      */
     public String insert(String sequence) {
@@ -36,7 +37,7 @@ public class DNADB implements DNA {
         }
         for (int i = 0; i < sequence.length(); i++) {
             char letter = sequence.charAt(i);
-            if (letter != 'A' && letter != 'C' && letter != 'G' 
+            if (letter != 'A' && letter != 'C' && letter != 'G'
                 && letter != 'T') {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
@@ -52,7 +53,9 @@ public class DNADB implements DNA {
     // ----------------------------------------------------------
     /**
      * Remove a DNA string into the database
-     * @param sequence The sequence to remove
+     * 
+     * @param sequence
+     *            The sequence to remove
      * @return The outcomes message string
      */
     public String remove(String sequence) {
@@ -64,7 +67,7 @@ public class DNADB implements DNA {
         }
         for (int i = 0; i < sequence.length(); i++) {
             char letter = sequence.charAt(i);
-            if (letter != 'A' && letter != 'C' && letter != 'G' 
+            if (letter != 'A' && letter != 'C' && letter != 'G'
                 && letter != 'T') {
                 return "Bad Input Sequence |" + sequence + "|\n";
             }
@@ -80,6 +83,7 @@ public class DNADB implements DNA {
     // ----------------------------------------------------------
     /**
      * Print the tree
+     * 
      * @return the print string
      */
     public String print() {
@@ -90,6 +94,7 @@ public class DNADB implements DNA {
     // ----------------------------------------------------------
     /**
      * Print the stats
+     * 
      * @return the print string
      */
     public String printLengths() {
@@ -100,6 +105,7 @@ public class DNADB implements DNA {
     // ----------------------------------------------------------
     /**
      * Print the lengths
+     * 
      * @return the print string
      */
     public String printStats() {
@@ -110,19 +116,18 @@ public class DNADB implements DNA {
     // ----------------------------------------------------------
     /**
      * Search for a given string
-     * @param sequence The sequence to search for
+     * 
+     * @param sequence
+     *            The sequence to search for
      * @return the print string
      */
     public String search(String sequence) {
         if (sequence == null) {
             return "Bad input: Sequence may not be null\r\n";
         }
-        if (sequence.equals("")) {
-            return tree.search("");
-        }
         for (int i = 0; i < sequence.length(); i++) {
             char letter = sequence.charAt(i);
-            if (letter != 'A' && letter != 'C' && letter != 'G' 
+            if (letter != 'A' && letter != 'C' && letter != 'G'
                 && letter != 'T') {
                 if (i == sequence.length() - 1 && letter == '$') {
                     continue;
@@ -132,12 +137,6 @@ public class DNADB implements DNA {
                 }
             }
         }
-        /*
-        boolean found = tree.searchCheck(sequence);
-        if(!found) {
-            return "Sequence |" + sequence + "| found";
-        }*/
-        //return "Sequence |" + sequence + "| not found";
         return tree.search(sequence);
     }
 }
