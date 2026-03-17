@@ -127,16 +127,17 @@ public class DNADB implements DNA {
         }
         for (int i = 0; i < sequence.length(); i++) {
             char letter = sequence.charAt(i);
-            if (letter != 'A' && letter != 'C' && letter != 'G' && letter != 'T') {
             if (letter != 'A' && letter != 'C' && letter != 'G'
                 && letter != 'T') {
-                if (i == sequence.length() - 1 && letter == '$') {
-                    continue;
+                if (letter != 'A' && letter != 'C' && letter != 'G'
+                    && letter != 'T') {
+                    if (i == sequence.length() - 1 && letter == '$') {
+                        continue;
+                    }
+                    else {
+                        return "Bad input sequence |" + sequence + "|\r\n";
+                    }
                 }
-                else {
-                    return "Bad input sequence |" + sequence + "|\r\n";
-                }
-            }
             }
         }
         return tree.search(sequence);

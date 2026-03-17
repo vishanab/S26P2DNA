@@ -93,6 +93,7 @@ public class LeafNode implements Node {
         return this;
     }
 
+
     /**
      * check if a node contains a given sequence
      * 
@@ -110,6 +111,7 @@ public class LeafNode implements Node {
         return info.startsWith(s);
     }
 
+
     /**
      * check if a node contains a given sequence
      * 
@@ -122,6 +124,7 @@ public class LeafNode implements Node {
     public boolean searchExact(String s, int depth) {
         return info != null && info.equals(s);
     }
+
 
     /**
      * check if a node contains a given sequence

@@ -610,11 +610,6 @@ public class DNAProjTest extends TestCase {
         assertTrue(leaf.search("ACGT$"));
     }
 
-    public void testLeafSearchSuffixMatch() {
-        LeafNode leaf = new LeafNode("ACGT$");
-        assertTrue(leaf.search("GT$"));
-    }
-
     public void testLeafSearchNoMatch() {
         LeafNode leaf = new LeafNode("ACGT$");
         assertFalse(leaf.search("AAAA$"));

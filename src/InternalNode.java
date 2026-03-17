@@ -88,6 +88,7 @@ public class InternalNode implements Node {
         return this;
     }
 
+
     /**
      * check if a node contains a given sequence
      * 
@@ -100,6 +101,7 @@ public class InternalNode implements Node {
         return kids[ind].search(s.substring(1));
 
     }
+
 
     /**
      * check if a node contains a given sequence
@@ -116,6 +118,7 @@ public class InternalNode implements Node {
         int ind = indexOfChar(s.charAt(depth));
         return kids[ind].searchExact(s, depth + 1);
     }
+
 
     /**
      * check if a node contains a given sequence
