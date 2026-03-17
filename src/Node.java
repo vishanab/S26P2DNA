@@ -60,7 +60,7 @@ public interface Node {
      * check if a node contains a given sequence
      * 
      * @param s
-     *            The node's sequence
+     *            The node's given sequence
      * @param depth
      *            the given depth to start with
      * @param nodes
