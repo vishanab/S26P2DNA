@@ -37,7 +37,7 @@ public interface Node {
     /**
      * check if a node contains a given sequence
      * 
-     * @param s
+     * @param search
      *            The given sequence
      * @return true if sequence found
      */
@@ -61,7 +61,7 @@ public interface Node {
      * 
      * @param s
      *            The node's given sequence
-     * @param depth
+     * @param d
      *            the given depth to start with
      * @param nodes
      *            array being used to track the number of nodes checked

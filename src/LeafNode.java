@@ -131,7 +131,7 @@ public class LeafNode implements Node {
      * 
      * @param s
      *            The node's sequence
-     * @param depth
+     * @param d
      *            the given depth to start with
      * @param nodes
      *            array being used to track the number of nodes checked
